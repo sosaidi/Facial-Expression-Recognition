@@ -4,14 +4,15 @@ import urllib.request
 import ssl
 import numpy as np
 import tensorflow as tf
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from tensorflow.keras.applications import MobileNetV2
-from tensorflow.keras.models import Sequential
+from keras import Sequential
+from keras.src.applications.mobilenet_v2 import MobileNetV2
+from keras.src.legacy.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.layers import Dense, GlobalAveragePooling2D, Dropout
 from tensorflow.keras.optimizers import Adam
 from keras_tuner import HyperModel, Hyperband
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
+
 from load_data import load_images_and_labels, split_data
 
 # Function to download pre-trained weights

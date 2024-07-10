@@ -1,6 +1,10 @@
+import os
+
 import tensorflow as tf
-from tensorflow.keras.models import Sequential
+from keras import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout, Layer
+
+from src.train import download_weights
 
 
 class AttentionLayer(Layer):
