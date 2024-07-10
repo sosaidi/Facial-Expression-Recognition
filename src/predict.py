@@ -1,12 +1,13 @@
 import cv2
 import numpy as np
-from keras.src.saving.saving_lib import load_model
+from tensorflow.keras.models import load_model
 from tensorflow.keras.optimizers import Adam
 import tensorflow as tf
 import matplotlib.pyplot as plt
 
 # Emotion label dictionary
 emotion_dict = {0: "angry", 1: "disgust", 2: "fear", 3: "happy", 4: "neutral", 5: "sad", 6: "surprise"}
+
 
 def preprocess_image(image_path):
     """
@@ -26,6 +27,7 @@ def preprocess_image(image_path):
     image = np.expand_dims(image, axis=0)
     return image
 
+
 def predict_emotion(image_path, model):
     """
     Predicts the emotion displayed in a given image.
@@ -40,6 +42,7 @@ def predict_emotion(image_path, model):
     emotion = np.argmax(prediction)
     emotion_label = emotion_dict[emotion]
     print(f"Predicted emotion: {emotion_label}")
+
 
 def capture_image_from_webcam(model):
     """
@@ -74,6 +77,7 @@ def capture_image_from_webcam(model):
     cap.release()
     cv2.destroyAllWindows()
 
+
 def get_gradcam_heatmap(model, image, last_conv_layer_name):
     """
     Generates a Grad-CAM heatmap for a given image and model.
@@ -98,6 +102,7 @@ def get_gradcam_heatmap(model, image, last_conv_layer_name):
     heatmap = tf.maximum(heatmap, 0) / tf.math.reduce_max(heatmap)
 
     return heatmap.numpy()
+
 
 def display_gradcam(image_path, model, last_conv_layer_name):
     """
@@ -129,6 +134,7 @@ def display_gradcam(image_path, model, last_conv_layer_name):
     plt.imshow(superimposed_img)
     plt.axis('off')
     plt.show()
+
 
 if __name__ == "__main__":
     # Load the trained model
