@@ -73,7 +73,7 @@ This project aims to recognize facial expressions and audio-based emotions using
 
 1. Clone the repository:
     ```sh
-    git clone <repository-url>
+    git clone https://github.com/sosaidi/Facial-Expression-Recognition.git
     cd Facial-Expression-Recognition
     ```
 
